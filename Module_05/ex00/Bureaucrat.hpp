@@ -10,4 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
+# include <iostream>
+# include <string>
+
+class	Bureaucrat
+{
+private:
+	std::string	name;
+	int			grade;
+public:
+	Bureaucrat();
+	Bureaucrat(std::string _name, int _grade);
+	Bureaucrat(const Bureaucrat& copy);
+	Bureaucrat &operator=(const Bureaucrat& src);
+	~Bureaucrat();
+
+	std::string	getName() const;
+	int			getGrade() const;
+	void		incrementGrade();
+	void		decrementGrade();
+
+	class GradeTooHighException : public std::exception
+	{
+	public:
+		virtual const char * what() const throw() {return("Bureaucrat grade is too high");}
+	};
+	class GradeTooLowException : public std::exception
+	{
+	public:
+		virtual const char * what() const throw() {return("Bureaucrat grade is too low");}
+	};
+};
+
+std::ostream& operator<<(std::ostream& output, const Bureaucrat& copy);
+
+#endif

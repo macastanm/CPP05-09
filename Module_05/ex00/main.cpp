@@ -10,4 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Bureaucrat.hpp"
 
+int	main()
+{
+	{
+		try
+		{
+			Bureaucrat	b("Cracked", 149);
+			std::cout << b;
+			b.decrementGrade();
+			std::cout << b;
+			b.decrementGrade();
+			std::cout << b;
+			b.decrementGrade();
+			std::cout << b;
+			b.decrementGrade();
+			std::cout << b;
+			b.decrementGrade();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+
+	}
+	return(0);
+}
