@@ -15,26 +15,17 @@
 
 int	main()
 {
-	{
-		try
-		{
-			Bureaucrat	Ma("Maria", 50);
-			Form	a("A", 49, 45);
-			std::cout << Ma;
-			std::cout << a;
-			std::cout << "Maria trys to sign the form A" << std::endl;
-			Ma.signForm(a);
-			std::cout << "Incrementing Maria's grade" << std::endl;
-			Ma.incrementGrade();
-			std::cout << "Maria trys to sign the form A again" << std::endl;
-			Ma.signForm(a);
-			std::cout << Ma;
-			std::cout << a;
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
+	Bureaucrat	Ma("Maria", 50);
+	Form	a("A", 49, 45);
+	std::cout << Ma;
+	std::cout << a;
+	std::cout << "Maria trys to sign the form A" << std::endl;
+	Ma.signForm(a);
+	std::cout << "Incrementing Maria's grade" << std::endl;
+	Ma.incrementGrade();
+	std::cout << "Maria trys to sign the form A again" << std::endl;
+	Ma.signForm(a);
+	std::cout << Ma;
+	std::cout << a;
 	return(0);
 }
