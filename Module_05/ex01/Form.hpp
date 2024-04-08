@@ -15,6 +15,8 @@
 
 # include "Bureaucrat.hpp"
 
+class	Bureaucrat;
+
 class	Form
 {
 private:
@@ -25,13 +27,16 @@ private:
 
 public:
 	Form();
-	Form(std::string _name, bool _sing, int _gradeS, int _gradeE);
+	Form(std::string _name, int _gradeS, int _gradeE);
 	Form(const Form& copy);
 	Form &operator=(const Form& src);
 	~Form();
 
 	void	beSigned(Bureaucrat& _bureaucrat);
-	void	signForm();
+	std::string	getName() const;
+	bool		getSignature() const;
+	int			getGradeSign() const;
+	int			getGradeExecute() const;
 
 	class GradeTooHighException : public std::exception
 	{
@@ -45,6 +50,6 @@ public:
 	};
 };
 
-std::ostream& operator<<(std::ostream& output, const Bureaucrat& copy);
+std::ostream& operator<<(std::ostream& output, const Form& copy);
 
 #endif

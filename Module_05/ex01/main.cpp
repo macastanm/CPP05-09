@@ -11,65 +11,25 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main()
 {
 	{
 		try
 		{
-			Bureaucrat	b("Maria", 149);
-			std::cout << b;
-			b.decrementGrade();
-			std::cout << b;
-			b.decrementGrade();
-			std::cout << b;
-			b.decrementGrade();
-			std::cout << b;
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-	{
-		try
-		{
-			Bureaucrat	a("Luiza", 2);
+			Bureaucrat	Ma("Maria", 50);
+			Form	a("A", 49, 45);
+			std::cout << Ma;
 			std::cout << a;
-			a.incrementGrade();
+			std::cout << "Maria trys to sign the form A" << std::endl;
+			Ma.signForm(a);
+			std::cout << "Incrementing Maria's grade" << std::endl;
+			Ma.incrementGrade();
+			std::cout << "Maria trys to sign the form A again" << std::endl;
+			Ma.signForm(a);
+			std::cout << Ma;
 			std::cout << a;
-			a.incrementGrade();
-			std::cout << a;
-			a.incrementGrade();
-			std::cout << a;
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-	{
-		try
-		{
-			Bureaucrat	c("lulu", 180);
-			std::cout << c;
-			c.incrementGrade();
-			std::cout << c;
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-	{
-		try
-		{
-			Bureaucrat	d("malu", 75);
-			std::cout << d;
-			d.incrementGrade();
-			std::cout << d;
-			d.decrementGrade();
-			std::cout << d;
 		}
 		catch(const std::exception& e)
 		{

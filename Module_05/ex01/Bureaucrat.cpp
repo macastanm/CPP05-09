@@ -14,12 +14,12 @@
 
 Bureaucrat::Bureaucrat() : name("undefined"), grade(150)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Bureaucrat: default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string _name, int _grade) : name(_name), grade(_grade)
 {
-	std::cout << this->name << " has ben created with grade: " << this->grade << std::endl;
+	std::cout << "Bureaucrat " << this->name << " has ben created with grade: " << this->grade << std::endl;
 	if(_grade < 1)
 		throw GradeTooHighException();
 	if(_grade > 150)
@@ -28,7 +28,7 @@ Bureaucrat::Bureaucrat(std::string _name, int _grade) : name(_name), grade(_grad
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Bureaucrat: copy constructor called" << std::endl;
 	this->name = copy.name;
 	this->grade = copy.grade;
 }
@@ -69,6 +69,19 @@ void	Bureaucrat::decrementGrade() {
 	if (this->grade > 150)
 	{
 		throw GradeTooLowException();
+	}
+}
+
+void	Bureaucrat::signForm(Form& _form)
+{
+	try {
+		_form.beSigned(*this);
+		std::cout << this->name << " signed " << _form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << this->name << "  couldn’t sign " << _form.getName() << " because ";
+		std::cerr << e.what() << std::endl;
 	}
 }
 
