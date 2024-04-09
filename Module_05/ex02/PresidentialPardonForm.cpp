@@ -14,12 +14,12 @@
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 145, 137), target("undefined")
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), target("undefined")
 {
 	std::cout << "PresidentialPardonForm: default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string _name) : AForm("PresidentialPardonForm", 145, 137), target(_name)
+PresidentialPardonForm::PresidentialPardonForm(std::string _name) : AForm("PresidentialPardonForm", 25, 5), target(_name)
 {
 	std::cout << "PresidentialPardonForm " << this->target << " has ben created." << std::endl;
 }
@@ -53,7 +53,7 @@ void	PresidentialPardonForm::execute(const Bureaucrat & _executor) const
 {
 	if (_executor.getGrade() > this->getGradeExecute())
 		throw GradeTooLowException();
-	if (this->getSignature() == false)
+	if (getSignature() == 0)
 		throw NotSigned();
-	std::cout << "faz algo" << std::endl;
+	std::cout << this->target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

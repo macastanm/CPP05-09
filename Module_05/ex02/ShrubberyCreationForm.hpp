@@ -15,6 +15,10 @@
 
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
+# include <iostream>
+# include <fstream>
+# include <string>
+# include <cstdlib>
 
 class	ShrubberyCreationForm : public AForm
 {

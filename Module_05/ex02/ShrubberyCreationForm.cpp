@@ -53,7 +53,32 @@ void	ShrubberyCreationForm::execute(const Bureaucrat & _executor) const
 {
 	if (_executor.getGrade() > this->getGradeExecute())
 		throw GradeTooLowException();
-	if (this->getSignature() == false)
+	if (getSignature() == 0)
 		throw NotSigned();
-	std::cout << "faz algo" << std::endl;
+	std::string	fileName = target + "_shrubbery";
+	std::ofstream	file;
+	file.open(fileName.c_str());
+	if (!file.is_open())
+	{
+		std::cout << "Something is wrong with the file creation." << std::endl;
+	}
+	else
+	{
+		file << " └── Have/" << std::endl;
+		file << "    ├── a/" << std::endl;
+		file << "    │   └── nice/" << std::endl;
+		file << "    │       └── day/" << std::endl;
+		file << "    │           └── :)" << std::endl;
+		file << "    └── Hope everything is good/" << std::endl;
+		file << "        ├── and/" << std::endl;
+		file << "        │   ├── all" << std::endl;
+		file << "        │   ├── your" << std::endl;
+		file << "        │   ├── dreams" << std::endl;
+		file << "        │   └── come true." << std::endl;
+		file << "        └── See/" << std::endl;
+		file << "            └── You/" << std::endl;
+		file << "                ├── soon" << std::endl;
+		file << "                └── bye!" << std::endl;
+	}
+	file.close();
 }

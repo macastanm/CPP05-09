@@ -14,12 +14,12 @@
 #include "AForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 145, 137), target("undefined")
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), target("undefined")
 {
 	std::cout << "RobotomyRequestForm: default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string _name) : AForm("RobotomyRequestForm", 145, 137), target(_name)
+RobotomyRequestForm::RobotomyRequestForm(std::string _name) : AForm("RobotomyRequestForm", 72, 45), target(_name)
 {
 	std::cout << "RobotomyRequestForm " << this->target << " has ben created." << std::endl;
 }
@@ -53,7 +53,15 @@ void	RobotomyRequestForm::execute(const Bureaucrat & _executor) const
 {
 	if (_executor.getGrade() > this->getGradeExecute())
 		throw GradeTooLowException();
-	if (this->getSignature() == false)
+	if (this->getSignature() == 0)
+	{
 		throw NotSigned();
-	std::cout << "faz algo" << std::endl;
+	}
+	std::cout << "Drilling noises!!!" << std::endl;
+	srand(time(NULL));
+	int i = (rand() % 2) + 1;
+	if(i == 1)
+		std::cout << this->target << " has been robotomized" << std::endl;
+	else
+		std::cout << this->target << " robotomy failed" << std::endl;
 }

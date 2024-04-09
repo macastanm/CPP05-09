@@ -13,9 +13,12 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	main()
 {
+	std::cout << RED << "First test" << NRM << std::endl;
 	Bureaucrat	Ma("Maria", 138);
 	ShrubberyCreationForm	a("A");
 	std::cout << Ma;
@@ -30,5 +33,30 @@ int	main()
 	Ma.executeForm(a);
 	std::cout << Ma;
 	std::cout << a;
+
+	std::cout << std::endl << RED << "Second test" << NRM << std::endl;
+	Bureaucrat	Lu("Malu", 40);
+	RobotomyRequestForm	b("28");
+	std::cout << Lu;
+	std::cout << b;
+	std::cout << RED << "Malu trys to execute the form 28 without sign" << NRM << std::endl;
+	Lu.executeForm(b);
+	std::cout << RED << "Now Malu trys to sign the form 28 and then execute" << NRM << std::endl;
+	Lu.signForm(b);
+	Lu.executeForm(b);
+	std::cout << Lu;
+	std::cout << b;
+
+	std::cout << std::endl << RED << "Third test" << NRM << std::endl;
+	Bureaucrat	Ju("Julia", 1);
+	PresidentialPardonForm	c("C");
+	std::cout << Ju;
+	std::cout << c;
+	std::cout << RED << "Julia trys to sign the form A and execute" << NRM << std::endl;
+	Ju.signForm(c);
+	Ju.executeForm(c);
+	std::cout << Ju;
+	std::cout << c;
+	std::cout << std::endl;
 	return(0);
 }
