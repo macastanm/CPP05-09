@@ -10,4 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
+# include "AForm.hpp"
+# include "Bureaucrat.hpp"
+
+class	ShrubberyCreationForm : public AForm
+{
+private:
+	std::string	target;
+public:
+	ShrubberyCreationForm();
+	ShrubberyCreationForm(std::string _name);
+	ShrubberyCreationForm(const ShrubberyCreationForm& copy);
+	ShrubberyCreationForm &operator=(const ShrubberyCreationForm& src);
+	~ShrubberyCreationForm();
+
+	std::string	getTarget() const;
+	void	execute(Bureaucrat const & _executor) const;
+
+};
+
+#endif
