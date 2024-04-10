@@ -22,12 +22,9 @@ int	main()
 	std::cout << RED << "First test: right form name" << NRM << std::endl;
 	AForm *rrf = 0;
 	try {
-		//AForm	*roboty = 0;
 		Bureaucrat	Ma("Maria", 46);
 		Intern someRandomIntern;
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		//std::cout << Ma;
-		//std::cout << rrf;
 		std::cout << RED << "Maria trys to sign the form and execute" << NRM << std::endl;
 		Ma.signForm(*rrf);
 		Ma.executeForm(*rrf);
@@ -38,12 +35,12 @@ int	main()
 		Ma.executeForm(*rrf);
 		//std::cout << Ma;
 		//std::cout << rrf;
-		//delete rrf;
+		delete rrf;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
-		//delete rrf;
+		delete rrf;
 	}
 
 	std::cout << std::endl << RED << "Second: wrong form name" << NRM << std::endl;
@@ -52,21 +49,17 @@ int	main()
 		Bureaucrat	Lu("Malu", 40);
 		Intern someRandom;
 		b = someRandom.makeForm("bata", "ta");
-		std::cout << Lu;
-		std::cout << b;
 		std::cout << RED << "Malu trys to execute the form without sign" << NRM << std::endl;
 		Lu.executeForm(*b);
 		std::cout << RED << "Now Malu trys to sign the form and then execute" << NRM << std::endl;
 		Lu.signForm(*b);
 		Lu.executeForm(*b);
-		std::cout << Lu;
-		std::cout << b;
-		//delete b;
+		delete b;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
-		//delete b;
+		delete b;
 	}
 	return(0);
 }

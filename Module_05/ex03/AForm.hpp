@@ -35,7 +35,7 @@ public:
 	AForm(std::string _name, int _gradeS, int _gradeE);
 	AForm(const AForm& copy);
 	AForm &operator=(const AForm& src);
-	~AForm();
+	virtual ~AForm();
 
 	void	beSigned(Bureaucrat& _bureaucrat);
 	std::string	getName() const;
