@@ -16,7 +16,7 @@
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
-class	PresidentialPardonForm
+class	Intern
 {
 public:
 	Intern();
@@ -28,6 +28,12 @@ public:
 	AForm	*makeShrubberyCreation(std::string _target);
 	AForm	*makeRobotomyRequest(std::string _target);
 	AForm	*makePresidentialPardon(std::string _target);
+
+	class NotFound : public std::exception
+	{
+	public:
+		virtual const char * what() const throw() {return("This form does not exists");}
+	};
 };
 
 #endif
