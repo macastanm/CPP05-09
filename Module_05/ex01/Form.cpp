@@ -26,23 +26,20 @@ Form::Form(std::string _name, int _gradeS, int _gradeE) : name(_name), signature
 		throw GradeTooLowException();
 }
 
-Form::Form(const Form& copy)
+Form::Form(const Form& copy) : name(copy.name), signature(copy.signature), gradeSign(copy.gradeSign), gradeExecute(copy.gradeExecute)
 {
 	std::cout << "Form: copy constructor called" << std::endl;
-	this->name = copy.name;
-	this->signature = copy.signature;
-	this->gradeSign = copy.gradeSign;
-	this->gradeExecute = copy.gradeExecute;
+	if(copy.gradeSign < 1)
+		throw GradeTooHighException();
+	if(copy.gradeSign > 150)
+		throw GradeTooLowException();
 }
 
 Form&	Form::operator=(const Form& src)
 {
 	if (this != &src)
 	{
-		this->name = src.name;
 		this->signature = src.signature;
-		this->gradeSign = src.gradeSign;
-		this->gradeExecute = src.gradeExecute;
 	}
 	return (*this);
 }
