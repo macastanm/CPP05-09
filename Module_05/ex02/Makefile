@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = AForm
+NAME = Forms
 
 CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -29,7 +29,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)
 	clear
-	@echo "./AForm is ready!"
+	@echo "./Forms is ready!"
 
 clean:
 	@$(RM) $(OBJS)
