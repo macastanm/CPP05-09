@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 		std::cout << "Wrong number of arguments." << std::endl;
 		return (-1);
 	}
-	std::string paremeter = argv[1];
-	ScalarConverter::convert(paremeter);
+	std::string parameter = argv[1];
+	ScalarConverter::convert(parameter);
 	return (0);
 }

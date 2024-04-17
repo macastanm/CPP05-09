@@ -15,6 +15,9 @@
 
 # include <iostream>
 # include <string>
+# include <ctype.h>
+# include <limits>
+# include <stdlib.h>
 
 class	ScalarConverter
 {
@@ -29,6 +32,14 @@ public:
 
 	static bool checkChar(std::string parameter);
 	static void	printChar(std::string parameter);
+	static bool checkInt(std::string parameter);
+	static void	printInt(std::string parameter);
+	static bool checkFloat(std::string parameter);
+	static void	printFloat(std::string parameter);
+	static bool checkDouble(std::string parameter);
+	static void	printDouble(std::string parameter);
+	static bool checkSpecial(std::string parameter);
+	static void	printSpecial(std::string parameter);
 };
 
 #endif
