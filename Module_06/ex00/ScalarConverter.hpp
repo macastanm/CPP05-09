@@ -26,6 +26,9 @@ private:
 
 public:
 	static void	convert(std::string parameter);
+
+	static bool checkChar(std::string parameter);
+	static void	printChar(std::string parameter);
 };
 
 #endif
