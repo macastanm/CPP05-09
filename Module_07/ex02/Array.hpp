@@ -65,7 +65,7 @@ public:
 	public:
 		virtual const char * what() const throw() {return("index is out of bounds");}
 	};
-	T &operator[](unsigned int n) {
+	T &operator[](unsigned int n) const {
 		if (n >= arraySize)
 		{
 			throw outOfBounds();
