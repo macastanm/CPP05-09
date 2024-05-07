@@ -10,4 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
+# include <iostream>
+# include <algorithm>
+# include <vector>
+
+template <typename T> int easyfind(T& container, int compare)
+{
+	if (std::find(container.begin(), container.end(), compare) != container.end())
+	{
+		std::cout << "Value found" << std::endl;
+		return (0);
+	}
+	else
+	{
+		std::cout << "Value not found" << std::endl;
+		return (-1);
+	}
+}
+
+#endif
