@@ -16,12 +16,16 @@
 # include <iostream>
 # include <algorithm>
 # include <vector>
+# include <iterator>
+# include <list>
+# include <set>
 
 template <typename T> int easyfind(T& container, int compare)
 {
-	if (std::find(container.begin(), container.end(), compare) != container.end())
+	typename T::iterator found = std::find(container.begin(), container.end(), compare);
+	if (found != container.end())
 	{
-		std::cout << "Value found" << std::endl;
+		std::cout << "Value found in position: " << std::distance(container.begin(), found) << std::endl;
 		return (0);
 	}
 	else
