@@ -19,6 +19,7 @@
 # include <iterator>
 # include <list>
 # include <set>
+# include <limits>
 
 class	Span
 {
@@ -46,6 +47,13 @@ public:
 	public:
 		virtual const char * what() const throw() {return("No span can be found");}
 	};
+	void	addManyNumbers(std::vector<int> numbers);
+	class noSpaceInTheContainer : public std::exception
+	{
+	public:
+		virtual const char * what() const throw() {return("There is not enough space for this amount of integers");}
+	};
+	void	printVector(void);
 };
 
 #endif
