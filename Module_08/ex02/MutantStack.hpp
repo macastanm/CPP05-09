@@ -28,18 +28,21 @@ public:
 		*this = copy;
 	}
 	MutantStack &operator=(const MutantStack& src){
-		std::stack<T>::operator=(this, src);
+		if (this != &src)
+		{
+			std::stack<T>::operator=(src);
+		}
 		return (*this);
 	}
 	~MutantStack(){
 	}
 
-	typedef typename std::stack<T>::container_type::iterator it;
+	typedef typename std::stack<T>::container_type::iterator iterator;
 
-	it	begin(void){
+	iterator	begin(void){
 		return (this->c.begin());
 	}
-	it	end(void){
+	iterator	end(void){
 		return (this->c.end());
 	}
 };

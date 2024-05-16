@@ -54,5 +54,17 @@ int main() {
 		++it2;
 	}
 	std::list<int> l(mlist);
+
+	std::cout << std::endl << "-------------------------------------------------" << std::endl;
+	MutantStack<int> copyM(mstack);
+	copyM.push(55);
+	copyM.push(98);
+	copyM.push(100);
+	MutantStack<int>::iterator it3 = copyM.begin();
+	MutantStack<int>::iterator ite3 = copyM.end();
+	while (it3 != ite3) {
+		std::cout << *it3 << std::endl;
+		++it3;
+	}
 	return 0;
 }

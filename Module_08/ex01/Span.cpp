@@ -47,11 +47,6 @@ int Span::longestSpan() {
 	std::vector<int>::iterator it;
 	for (it = spanSorted.begin(); it != spanSorted.end(); ++it)
 		i++;
-	/*std::cout << std::endl << "This is the vector in order: " << std::endl;
-	std::vector<int>::iterator it2;
-	for (it2 =  spanSorted.begin(); it2 !=  spanSorted.end(); ++it2)
-		std::cout << *it2 << " ";
-	std::cout << std::endl;*/
 	return (std::abs((spanSorted[0] - spanSorted[i - 1])));
 }
 
