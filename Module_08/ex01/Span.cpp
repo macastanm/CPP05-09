@@ -43,20 +43,14 @@ int Span::longestSpan() {
 	std::vector<int> spanSorted;
 	spanSorted = spanContainer;
 	std::sort(spanSorted.begin(), spanSorted.end());
-	int i = 0;
-	std::vector<int>::iterator it;
-	for (it = spanSorted.begin(); it != spanSorted.end(); ++it)
-		i++;
+	int i = spanContainer.size();
 	return (std::abs((spanSorted[0] - spanSorted[i - 1])));
 }
 
 int	Span::shortestSpan() {
 	if (spanContainer.size() <= 1)
 		throw noSpan();
-	int i = 0;
-	std::vector<int>::iterator it;
-	for (it = spanContainer.begin(); it != spanContainer.end(); ++it)
-		i++;
+	int i = spanContainer.size();
 	int shortest = std::numeric_limits<int>::max();
 	int	check = 0;
 	for (int j = 0; j < i; j++)
