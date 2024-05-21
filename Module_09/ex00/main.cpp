@@ -21,7 +21,15 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
+		BitcoinExchange	btc(argv[1]);
 
+		try {
+			btc.organizeDataBase();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 	return (0);
 }
