@@ -109,8 +109,16 @@ int	BitcoinExchange::printResult(std::string line) {
 	}
 
 	std::string	tempValue;
-	float		value;
 	tempValue = line.substr(i + 2, line.size());
+	for (size_t j = 0; j < tempValue.size(); j++)
+	{
+		if (!isdigit(tempValue[j]) && tempValue[j] != '-')
+		{
+			std::cout << "Error: bad value input => " << tempValue << std::endl;
+			return (1);
+		}
+	}
+	float		value;
 	value = std::atof(tempValue.c_str());
 	if (value < 0)
 	{
