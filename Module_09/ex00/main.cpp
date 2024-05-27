@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 
 		try {
 			btc.organizeDataBase();
+			btc.organizeDataFile();
 		}
 		catch(const std::exception& e)
 		{

@@ -40,6 +40,22 @@ public:
 		virtual const char * what() const throw() {return("Something is wrong with the file");}
 	};
 	void	organizeDataFile();
+	class errorFileEmpty : public std::exception
+	{
+	public:
+		virtual const char * what() const throw() {return("This file is empty");}
+	};
+	class errorFileWrong : public std::exception
+	{
+	public:
+		virtual const char * what() const throw() {return("The file is wrong");}
+	};
+	int	printResult(std::string line);
+	int	checkData(std::string dataToCheck);
+	int	checkYear(std::string yearToCheck);
+	int	checkMonth(std::string monthToCheck);
+	int	checkDay(std::string dayToCheck, int month, int year);
+	bool	leapYear(int year);
 };
 
 #endif
