@@ -50,12 +50,14 @@ public:
 	public:
 		virtual const char * what() const throw() {return("The file is wrong");}
 	};
-	int	printResult(std::string line);
+	int	checkLine(std::string line);
 	int	checkData(std::string dataToCheck);
+	int	checkValue(std::string valueToCheck);
 	int	checkYear(std::string yearToCheck);
 	int	checkMonth(std::string monthToCheck);
 	int	checkDay(std::string dayToCheck, int month, int year);
 	bool	leapYear(int year);
+	void	searchOutput(std::string data, float value);
 };
 
 #endif

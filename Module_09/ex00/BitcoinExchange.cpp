@@ -85,11 +85,11 @@ void	BitcoinExchange::organizeDataFile() {
 	}
 	while (std::getline(fileOG, fileLine))
 	{
-		printResult(fileLine);
+		checkLine(fileLine);
 	}
 }
 
-int	BitcoinExchange::printResult(std::string line) {
+int	BitcoinExchange::checkLine(std::string line) {
 	if (line.size() < 14 || line.find("|") == std::string::npos)
 	{
 		std::cout << "Error: bad input => " << line;
@@ -104,22 +104,50 @@ int	BitcoinExchange::printResult(std::string line) {
 	std::string	tempData;
 	tempData = line.substr(0, i - 1);
 	if (checkData(tempData) == 1)
-	{
 		return (1);
-	}
 
 	std::string	tempValue;
 	tempValue = line.substr(i + 2, line.size());
-	for (size_t j = 0; j < tempValue.size(); j++)
+	if (checkValue(tempValue) == 1)
+		return (1);
+	float		value;
+	value = std::atof(tempValue.c_str());
+	searchOutput(tempData, value);
+	return (0);
+}
+
+void	BitcoinExchange::searchOutput(std::string data, float value) {
+	std::map<std::string, float>::iterator it = dataCSV.begin();
+	while (it != dataCSV.end())
 	{
-		if (!isdigit(tempValue[j]) && tempValue[j] != '-')
+		if (it->first == data)
 		{
-			std::cout << "Error: bad value input => " << tempValue << std::endl;
-			return (1);
+			std::cout << data << " => " << value << " = " << (it->second * value) << std::endl;
+			return ;
+		}
+		it++;
+	}
+	std::cout << data << " not found " << value << std::endl;
+}
+
+int	BitcoinExchange::checkValue(std::string valueToCheck) {
+	for (size_t j = 0; j < valueToCheck.size(); j++)
+	{
+		if (!isdigit(valueToCheck[j]))
+		{
+			if (valueToCheck[j] == '-' || valueToCheck[j] == '.')
+			{
+				continue;
+			}
+			else
+			{
+				std::cout << "Error: bad value input => " << valueToCheck << std::endl;
+				return (1);
+			}
 		}
 	}
 	float		value;
-	value = std::atof(tempValue.c_str());
+	value = std::atof(valueToCheck.c_str());
 	if (value < 0)
 	{
 		std::cout << "Error: not a positive number" << std::endl;
@@ -130,7 +158,6 @@ int	BitcoinExchange::printResult(std::string line) {
 		std::cout << "Error: too large a number" << std::endl;
 		return (1);
 	}
-	std::cout << line << std::endl;
 	return (0);
 }
 
