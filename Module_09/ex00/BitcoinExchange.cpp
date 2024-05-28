@@ -127,7 +127,22 @@ void	BitcoinExchange::searchOutput(std::string data, float value) {
 		}
 		it++;
 	}
-	std::cout << data << " not found " << value << std::endl;
+	std::map<std::string, float>::iterator itEnd = dataCSV.begin();
+	while (itEnd != dataCSV.end())
+	{
+		if (itEnd->first > data)
+		{
+			itEnd--;
+			std::cout << data << " => " << value << " = " << (itEnd->second * value) << std::endl;
+			return ;
+		}
+		itEnd++;
+	}
+	itEnd--;
+	if (itEnd->first < data)
+	{
+		std::cout << data << " => " << value << " = " << (itEnd->second * value) << std::endl;
+	}
 }
 
 int	BitcoinExchange::checkValue(std::string valueToCheck) {
@@ -208,7 +223,7 @@ int	BitcoinExchange::checkData(std::string dataToCheck) {
 int	BitcoinExchange::checkYear(std::string yearToCheck) {
 	int	year = std::atoi(yearToCheck.c_str());
 
-	if (year < 2009 || year > 2022)
+	if (year < 2009)
 	{
 		return (-1);
 	}
