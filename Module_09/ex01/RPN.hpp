@@ -40,6 +40,11 @@ public:
 	public:
 		virtual const char * what() const throw() {return("There is not enough numbers to do the calculation");}
 	};
+	class errorSymbol : public std::exception
+	{
+	public:
+		virtual const char * what() const throw() {return("Symbol error");}
+	};
 };
 
 #endif

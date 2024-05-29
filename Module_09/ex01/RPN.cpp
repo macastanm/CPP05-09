@@ -37,13 +37,14 @@ RPN::RPN(std::string _input) : input(_input) {}
 
 float	RPN::doStack() {
 	float	result;
-	for (int i = 0; i < input.size(); i++)
+	for (size_t i = 0; i < input.length(); i++)
 	{
 		if (input[i] == ' ')
 			continue;
 		if (isdigit(input[i]))
 		{
-			numbers.push(std::atof(input[i].c_str));
+			std::string n(1, input[i]);
+			numbers.push(std::atof(n.c_str()));
 		}
 		else if (input[i] == '+' || input[i] == '-' || input[i] == '/' || input[i] == '*')
 		{
@@ -60,7 +61,13 @@ float	RPN::doStack() {
 		else
 		{
 			std::cout << "Error" << std::endl;
+			return (0);
 		}
+	}
+	if (numbers.size() > 1)
+	{
+		std::cout << "There is not enough operations to do the calculation" << std::endl;
+		return (0);
 	}
 	std::cout << numbers.top() << std::endl;
 	return (result);
@@ -74,6 +81,27 @@ float	RPN::doCalculation(char symbol) {
 
 	float	num1;
 	float	num2;
-	num1 = numbers.pop();
-	num2 = numbers.pop();
+	num2 = numbers.top();
+	numbers.pop();
+	num1 = numbers.top();
+	numbers.pop();
+
+	switch (symbol) {
+		case '+':
+			return (num1 + num2);
+			break;
+		case '-':
+			return (num1 - num2);
+			break;
+		case '*':
+			return (num1 * num2);
+			break;
+		case '/':
+			return (num1 / num2);
+			break;
+		default:
+			throw errorSymbol();
+			break;
+	}
+	return (0);
 }
