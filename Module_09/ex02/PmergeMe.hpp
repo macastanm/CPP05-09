@@ -10,4 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
+# include <iostream>
+# include <algorithm>
+# include <vector>
+# include <deque>
+# include <iterator>
+# include <fstream>
+# include <string>
+# include <cstdlib>
+# include <time.h>
+
+class	PmergeMe
+{
+private:
+	std::vector<int>	arrayVec;
+	std::deque<int>		arrayDeq;
+
+public:
+	PmergeMe();
+	PmergeMe(const PmergeMe& copy);
+	PmergeMe	&operator=(const PmergeMe& src);
+	~PmergeMe();
+
+	PmergeMe(int arc, char **arv);
+	void	doMergeAndPrintResult(void);
+	void	mergeSortVec(std::vector<int> array);
+	void	mergeVec(std::vector<int> letfArray, std::vector<int> rightArray, std::vector<int> array);
+};
+
+#endif
