@@ -37,8 +37,11 @@ public:
 
 	PmergeMe(int arc, char **arv);
 	void	doMergeAndPrintResult(void);
-	void	mergeSortVec(std::vector<int> array);
-	void	mergeVec(std::vector<int> letfArray, std::vector<int> rightArray, std::vector<int> array);
+	void	mergeSortVec(std::vector<int> &array);
+	void	mergeVec(std::vector<int> &leftArray, std::vector<int> &rightArray, std::vector<int> &array);
 };
+
+//leftArray = std::vector<int>(array.begin(), array.begin() + middle);
+//	rightArray = std::vector<int>(array.begin() + middle, array.end());
 
 #endif

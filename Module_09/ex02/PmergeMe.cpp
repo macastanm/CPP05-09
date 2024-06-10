@@ -38,12 +38,12 @@ PmergeMe::PmergeMe(int arc, char **arv) {
 }
 
 void	PmergeMe::doMergeAndPrintResult() {
+	size_t	i = 0;
 	std::cout << "Before: ";
-	std::vector<int>::iterator it = arrayVec.begin();
-	while (it != arrayVec.end())
+	while (i < arrayVec.size())
 	{
-		std::cout << it << " ";
-		it++;
+		std::cout << arrayVec[i] << " ";
+		i++;
 	}
 	std::cout << std::endl;
 
@@ -52,11 +52,11 @@ void	PmergeMe::doMergeAndPrintResult() {
 	clock_t	endVec = clock();
 
 	std::cout << "After: ";
-	std::vector<int>::iterator it2 = arrayVec.begin();
-	while (it2 != arrayVec.end())
+	i = 0;
+	while (i < arrayVec.size())
 	{
-		std::cout << it2 << " ";
-		it2++;
+		std::cout << arrayVec[i] << " ";
+		i++;
 	}
 	std::cout << std::endl;
 
@@ -65,7 +65,7 @@ void	PmergeMe::doMergeAndPrintResult() {
 	std::cout << "Time to process a range of " << arrayVec.size() << " elements with std::vector : " << totalVec << std::endl;
 }
 
-void	PmergeMe::mergeSortVec(std::vector<int> array) {
+void	PmergeMe::mergeSortVec(std::vector<int> &array) {
 	size_t	length = array.size();
 	if (length <= 1)
 		return;
@@ -90,4 +90,36 @@ void	PmergeMe::mergeSortVec(std::vector<int> array) {
 	mergeVec(leftArray, rightArray, array);
 }
 
-void
+void PmergeMe::mergeVec(std::vector<int> &leftArray, std::vector<int> &rightArray, std::vector<int> &array) {
+	size_t	i = 0;
+	size_t	l = 0;
+	size_t	r = 0;
+
+	while (l < leftArray.size() && r < rightArray.size())
+	{
+		if (leftArray[l] < rightArray[r])
+		{
+			array[i] = leftArray[l];
+			i++;
+			l++;
+		}
+		else
+		{
+			array[i] = rightArray[r];
+			i++;
+			r++;
+		}
+	}
+	while (l < leftArray.size())
+	{
+		array[i] = leftArray[l];
+		i++;
+		l++;
+	}
+	while (r < rightArray.size())
+	{
+		array[i] = rightArray[r];
+		i++;
+		r++;
+	}
+}

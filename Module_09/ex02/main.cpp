@@ -12,6 +12,22 @@
 
 #include "PmergeMe.hpp"
 
+int	checkDuplicate(int arc, char **arv)
+{
+	int j = 0;
+	for (int i = 1; i < arc; i++)
+	{
+		j = i + 1;
+		while (j < arc)
+		{
+			if (std::atoi(arv[i]) == std::atoi(arv[j]))
+				return (1);
+			j++;
+		}
+	}
+	return (0);
+}
+
 int	checkDigit(std::string	valueToCheck)
 {
 	for (size_t j = 0; j < valueToCheck.size(); j++)
@@ -51,6 +67,11 @@ int	main(int argc, char **argv)
 			std::cout << "Please insert numbers" << std::endl;
 			return (0);
 		}
+	}
+	if (checkDuplicate(argc, argv) == 1)
+	{
+		std::cout << "The program doesn't accept duplicate numbers" << std::endl;
+		return (0);
 	}
 	PmergeMe	arrayToSort(argc, argv);
 	arrayToSort.doMergeAndPrintResult();
