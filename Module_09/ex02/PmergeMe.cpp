@@ -50,6 +50,9 @@ void	PmergeMe::doMergeAndPrintResult() {
 	clock_t	startVec = clock();
 	mergeSortVec(arrayVec);
 	clock_t	endVec = clock();
+	clock_t	startDeq = clock();
+	mergeSortDeq(arrayDeq);
+	clock_t	endDeq = clock();
 
 	std::cout << "After: ";
 	i = 0;
@@ -62,7 +65,10 @@ void	PmergeMe::doMergeAndPrintResult() {
 
 	double	totalVec;
 	totalVec = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC;
-	std::cout << "Time to process a range of " << arrayVec.size() << " elements with std::vector : " << totalVec << std::endl;
+	std::cout << "Time to process a range of " << arrayVec.size() << " elements with std::vector: " << totalVec << "s" << std::endl;
+	double	totalDeq;
+	totalDeq = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
+	std::cout << "Time to process a range of " << arrayDeq.size() << " elements with std::vector: " << totalDeq << "s" << std::endl;
 }
 
 void	PmergeMe::mergeSortVec(std::vector<int> &array) {
@@ -91,6 +97,65 @@ void	PmergeMe::mergeSortVec(std::vector<int> &array) {
 }
 
 void PmergeMe::mergeVec(std::vector<int> &leftArray, std::vector<int> &rightArray, std::vector<int> &array) {
+	size_t	i = 0;
+	size_t	l = 0;
+	size_t	r = 0;
+
+	while (l < leftArray.size() && r < rightArray.size())
+	{
+		if (leftArray[l] < rightArray[r])
+		{
+			array[i] = leftArray[l];
+			i++;
+			l++;
+		}
+		else
+		{
+			array[i] = rightArray[r];
+			i++;
+			r++;
+		}
+	}
+	while (l < leftArray.size())
+	{
+		array[i] = leftArray[l];
+		i++;
+		l++;
+	}
+	while (r < rightArray.size())
+	{
+		array[i] = rightArray[r];
+		i++;
+		r++;
+	}
+}
+
+void	PmergeMe::mergeSortDeq(std::deque<int> &array) {
+	size_t	length = array.size();
+	if (length <= 1)
+		return;
+
+	std::deque<int>	leftArray;
+	std::deque<int>	rightArray;
+	size_t 	middle = length / 2;
+
+	for (size_t i = 0; i < length; i++)
+	{
+		if (i < middle)
+		{
+			leftArray.push_back(array[i]);
+		}
+		else
+		{
+			rightArray.push_back(array[i]);
+		}
+	}
+	mergeSortDeq(leftArray);
+	mergeSortDeq(rightArray);
+	mergeDeq(leftArray, rightArray, array);
+}
+
+void	PmergeMe::mergeDeq(std::deque<int> &leftArray, std::deque<int> &rightArray, std::deque<int> &array) {
 	size_t	i = 0;
 	size_t	l = 0;
 	size_t	r = 0;

@@ -39,6 +39,8 @@ public:
 	void	doMergeAndPrintResult(void);
 	void	mergeSortVec(std::vector<int> &array);
 	void	mergeVec(std::vector<int> &leftArray, std::vector<int> &rightArray, std::vector<int> &array);
+	void	mergeSortDeq(std::deque<int> &array);
+	void	mergeDeq(std::deque<int> &leftArray, std::deque<int> &rightArray, std::deque<int> &array);
 };
 
 #endif
