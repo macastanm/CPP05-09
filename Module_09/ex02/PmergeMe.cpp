@@ -68,7 +68,7 @@ void	PmergeMe::doMergeAndPrintResult() {
 	std::cout << "Time to process a range of " << arrayVec.size() << " elements with std::vector: " << totalVec << "s" << std::endl;
 	double	totalDeq;
 	totalDeq = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
-	std::cout << "Time to process a range of " << arrayDeq.size() << " elements with std::vector: " << totalDeq << "s" << std::endl;
+	std::cout << "Time to process a range of " << arrayDeq.size() << " elements with std::deque: " << totalDeq << "s" << std::endl;
 }
 
 void	PmergeMe::mergeSortVec(std::vector<int> &array) {
