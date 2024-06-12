@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cout << "Error: no arguments passed." << std::endl;
+		std::cout << "Error: no file name passed." << std::endl;
 		return (1);
 	}
 	else
